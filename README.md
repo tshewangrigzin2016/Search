@@ -1,6 +1,6 @@
 # Search
 
-A small, fast, quiet web browser for the Mac, by [Office Commun](https://officecommun.com).
+A small, fast, quiet web browser for the Mac, by [Office Commun](https://officecommun.com). This repository also includes a [Windows build](#building-on-windows) that uses WebView2.
 
 ![Search, with its tabs down the left and a page taking the rest of the window](.github/screenshot.png)
 
@@ -81,7 +81,7 @@ With Split View on, `⌥⌘N` splits the current page and `⌃⌘←` / `⌃⌘�
 
 So anyone can read exactly what a browser handling their passwords and history is doing, build it themselves, or fix something that bothers them. The code is small enough to actually read — about 42,000 lines of Swift, no dependencies beyond what Apple ships with macOS, one file per concern.
 
-### Building it
+### Building on macOS
 
 - macOS 14 or later, Xcode 16 / Swift 6 toolchain
 - `swift build` — runs the app straight from the SwiftPM binary
@@ -90,6 +90,20 @@ So anyone can read exactly what a browser handling their passwords and history i
 A build you make yourself won't be notarized or carry Office Commun's Developer ID, so the first launch needs a right-click → Open (or an allow in System Settings → Privacy & Security). That's expected — it's the same thing that happens with any app that isn't from the App Store or a notarized DMG. Your own build also keeps its passwords apart from a signed Search's: the keychain tells the two apart by their signatures.
 
 `./build.sh release dmg` also makes `Search.dmg` / `Search.zip`. `./build.sh release ship` additionally notarizes and staples — that step needs a Developer ID certificate and Apple credentials, so it only really does anything for Office Commun's own releases.
+
+### Building on Windows
+
+Install the [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) and the [Microsoft Edge WebView2 Evergreen Runtime](https://developer.microsoft.com/microsoft-edge/webview2/). Then run from a Windows desktop session:
+
+```powershell
+dotnet run --project Windows/Search.Windows.csproj
+```
+
+The Windows build has one address and search field, tabs, back and forward, reload, WebView2 downloads, and session restore. Press `Ctrl+L` for the address, `Ctrl+T` for a new tab, `Ctrl+W` to close it, and `Ctrl+Tab` to switch tabs. Search stores open tabs and the WebView2 profile in `%LOCALAPPDATA%\Search`.
+
+The features above describe the macOS app. Extensions, spaces, bookmarks, private tabs, Apple Passwords integration, the built-in ad blocker, and scripting are currently macOS-only.
+
+Run the Windows smoke test from a desktop session with `dotnet run --project Tests/Windows/Search.Windows.Smoke.csproj`. It opens WebView2 against a local test site and uses a temporary profile.
 
 ### How it's put together
 

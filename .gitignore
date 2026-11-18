@@ -4,6 +4,10 @@ build/
 .swiftpm/
 *.xcuserstate
 .DS_Store
+Windows/bin/
+Windows/obj/
+Tests/Windows/bin/
+Tests/Windows/obj/
 
 # Python's bytecode cache, left in Tests/ by the probe scripts.
 __pycache__/

@@ -237,7 +237,7 @@ in it is stale. Whoever works on Search keeps it that way, with `./ideas`
 - **Snoozing tabs** For now. *([#111](https://github.com/driceroland/Search/pull/111))*
 - **Vim mode** Vimium works. *([#160](https://github.com/driceroland/Search/pull/160))*
 - **Brazilian Portuguese** For now. *([#113](https://github.com/driceroland/Search/pull/113))*
-- **Windows and Linux** Search is made of the Mac's own WebKit and AppKit; there is nothing to carry over. *([#62](https://github.com/driceroland/Search/issues/62), [#64](https://github.com/driceroland/Search/issues/64), [#65](https://github.com/driceroland/Search/issues/65), [#197](https://github.com/driceroland/Search/pull/197))*
+- **Linux** Search uses the native browser engines on macOS and Windows.
 - **macOS before 14** The app leans on what macOS 14 added to WebKit.
 - **Accounts and sync** Bookmarks with Google, tabs across devices. Search has no server and keeps everything on your Mac; importing is the way in. *([#224](https://github.com/driceroland/Search/issues/224), email ×2, [#488](https://github.com/driceroland/Search/issues/488), [#674](https://github.com/driceroland/Search/issues/674))*
 - **Page slides with the sidebar** The page moves with the sidebar as it opens instead of redrawing in steps, with no gap at the edge; the PR also adds a speed setting. Since 0469c15 the page already slides with the column and is resized once; no speed setting, Settings stays short. *([#252](https://github.com/driceroland/Search/pull/252))*
